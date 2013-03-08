@@ -1,0 +1,47 @@
+<h1>Nuevo Usuario</h1>
+
+<%= form_tag( {:action => "create"}, {:method => :post}) %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this rol from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= label_tag :email %>
+    <%= text_field_tag :email%>
+  </div>
+  <div class="field">
+    Contraseña<br />
+    <%= password_field_tag :hashed_password_one %>
+  </div>
+  <div class="field">
+    Repite contraseña<br />
+    <%= password_field_tag :hashed_password_two %>
+  </div>
+  <div class="field">
+    <%= label_tag :nombre %>
+    <%= text_field_tag :nombre%>
+  </div>
+  <div class="field">
+    <%= label_tag :apellidos %>
+    <%= text_field_tag :apellidos%>
+  </div>
+  <div class="field">
+    <%= label_tag :activo %>
+    <%= check_box_tag :activo%>
+  </div>
+  
+  <div class="actions">
+    <%= submit_tag %>
+  </div>
+</form>
+
+
+<%= link_to "Atras", :action => "index"%>

@@ -1,0 +1,26 @@
+<div class="alert alert-success">
+	<p id="notice"><%= notice %></p>
+</div>
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+<p>
+  <b>Nombre:</b>
+  <%= @user.nombre %>
+</p>
+<p>
+  <b>Apellido:</b>
+  <%= @user.apellidos %>
+</p>
+<p>
+  <b>Activo:</b>
+  <% if @user.activo == 0 %>
+  	<span class="label label-important">desactivado</span>
+  <% else %>
+  	<span class="label label-success">activado</span>
+  <% end %>
+</p>
+
+<%= link_to "Editar", :action => "edit", :id => @user.id %>
+<%= link_to "Atras", :action => "index"%>

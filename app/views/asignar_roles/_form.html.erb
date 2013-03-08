@@ -1,0 +1,42 @@
+<%= form_tag( {:action => "update", :id =>@user.id}, {:method => :put}) %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation" class="alert alert-error">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this rol from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= label_tag :email %>
+    <%= text_field_tag :email,@user.email %>
+  </div>
+  <div class="field">
+    Contraseña<br />
+    <%= password_field_tag :hashed_password_one %>
+  </div>
+  <div class="field">
+    Repite contraseña<br />
+    <%= password_field_tag :hashed_password_two %>
+  </div>
+  <div class="field">
+    <%= label_tag :nombre %>
+    <%= text_field_tag :nombre,@user.nombre %>
+  </div>
+  <div class="field">
+    <%= label_tag :apellidos %>
+    <%= text_field_tag :apellidos,@user.apellidos %>
+  </div>
+  <div class="field">
+    <%= label_tag :activo %>
+    <%= check_box_tag :activo, "", (@user.activo == 0?false:true) %>
+  </div>
+  
+  <div class="actions">
+    <%= submit_tag %>
+  </div>
+</form>

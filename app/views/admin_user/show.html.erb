@@ -1,0 +1,28 @@
+<% if notice %>
+<div class="alert alert-success">
+	<p id="notice"><%= notice %></p>
+</div>
+<% end %>
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+<p>
+  <b>Nombre:</b>
+  <%= @user.nombre %>
+</p>
+<p>
+  <b>Apellido:</b>
+  <%= @user.apellidos %>
+</p>
+<p>
+  <b>Activo:</b>
+  <% if @user.activo == 0 %>
+  	<span class="label label-important">desactivado</span>
+  <% else %>
+  	<span class="label label-success">activado</span>
+  <% end %>
+</p>
+
+<%= button_to "Editar", {:action => "edit", :id => @user.id}, html_options = {:class=>"btn btn-warning", :method=>'get'}%>
+<%= button_to "Atras", {:action => "index"}, html_options = {:class=>"btn btn-danger", :method=>'get'}%>

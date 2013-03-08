@@ -1,0 +1,26 @@
+<h1>Listado de Roles</h1>
+
+<%if @rols.size > 0%>
+	<table class="table table-bordered">
+	  <tr>
+	    <th>Rol</th>
+	    <th></th>
+	    <th></th>
+	    <th></th>
+	  </tr>
+	<% @rols.each do |rol| %>
+	  <tr>
+	    <td><%= rol.rol %></td>
+	    <td><%= link_to 'Ver', rol,html_options = {:class => "btn btn-primary",:style=>"color: white"} %></td>
+	    <td><%= link_to 'Editar', edit_rol_path(rol), html_options = {:class => "btn btn-info",:style=>"color: white"} %></td>
+	    <td><%= link_to 'Eliminar', rol,html_options = {:class => "btn btn-danger",:style=>"color: white"}, confirm: '¿Estás seguro?', method: :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
+<%else%>
+	<div class="alert alert-info">No se encuentran roles registrados</div>
+<%end%>
+
+<br />
+
+<%= link_to 'Nuevo Rol', new_rol_path, html_options = {:class => "btn btn-success",:style=>"color: white"} %>

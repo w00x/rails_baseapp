@@ -1,0 +1,6 @@
+admin:
+  allow:
+    __all: []
+usuario:
+    allow:
+      main: [__all]

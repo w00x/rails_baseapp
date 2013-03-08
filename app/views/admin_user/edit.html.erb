@@ -1,0 +1,71 @@
+<h3>Editar Usuario</h3>
+<br />
+<%= form_tag( {:action => "update", :id =>@user.id}, {:method => :put, :class => "form-horizontal"}) %>
+  <% if @user.errors.any? %>
+    <div id="alert alert-error">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this rol from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="control-group">
+    <label class="control-label">
+    	<%= label_tag :email %>
+    </label>
+    <div class="controls">
+    	<%= text_field_tag :email,@user.email %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">
+    	Contraseña
+    </label>
+    <div class="controls">
+    	<%= password_field_tag :hashed_password_one %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">
+    	Repite contraseña
+    </label>
+    <div class="controls">
+    	<%= password_field_tag :hashed_password_two %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">
+    	<%= label_tag :nombre %>
+    </label>
+    <div class="controls">
+    	<%= text_field_tag :nombre,@user.nombre %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">
+    	<%= label_tag :apellidos %>
+    </label>
+    <div class="controls">
+    	<%= text_field_tag :apellidos,@user.apellidos %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">
+    	<%= label_tag :activo %>
+    </label>
+    <div class="controls">
+    	<%= check_box_tag :activo, "", (@user.activo == 0?false:true) %>
+    </div>
+  </div>
+  
+  <div class="form-actions">
+    <%= submit_tag "Actualizar","class"=>"btn btn-success" %>
+  </div>
+</form>
+
+<%= button_to 'Mostrar', user_path(@user),html_options = {:class=>"btn btn-info", :method=>'get'} %>
+<%= button_to "Atras", {:action => "index"}, html_options = {:class=>"btn btn-danger", :method=>'get'} %>

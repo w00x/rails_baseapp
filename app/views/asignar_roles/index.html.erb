@@ -1,0 +1,47 @@
+<%if notice%>
+	<div class="alert alert-success">
+		<p id="notice"><%= notice %></p>
+	</div>
+<%end%>
+
+<h3>Asignar roles a usuarios</h3>
+<br />
+<%= form_tag( {:action => "agregar"}, {:method => :put}) %>
+	<table class="table">
+		<thead>
+			<tr>
+				<td><b>Usuarios</b></td>
+				<td><%= select_tag("usuario", options_for_select(@users_list)) %></td>
+				<td><b>Roles</b></td>
+				<td><%= select_tag("rol", options_for_select(@rols_list)) %></td>
+			</tr>
+			<tr>
+				<td><%= submit_tag("Agregar regla", :class=>'btn btn-success') %></td>
+				<td colspan="3"></td>
+			</tr>
+		</thead>
+	</table>
+</form>
+
+<%if @user_rols.size > 0%>
+	<table class="table table-bordered">
+	  <tr>
+	    <th>Usuario</th>
+	    <th>Rol</th>
+	    <th></th>
+	  </tr>
+	<% @user_rols.each do |user_rol| %>
+	  <tr>
+	  	<td><%= User.find(user_rol.user_id).nombre %></td>
+	  	<td><%= Rol.find(user_rol.rol_id).rol %></td>
+	    <td><%= link_to 'Eliminar', {:action => "destroy",:id =>user_rol.id}, :class=>'btn btn-danger', confirm: '¿Estás seguro?', method: :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
+<%else%>
+	<div class="alert alert-info">No se encuentran roles asignados</div>
+<%end%>
+
+<br />
+
+<!--<%= link_to 'Nuevo Usuario', {:action => "new"} %>-->
