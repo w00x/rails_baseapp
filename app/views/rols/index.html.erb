@@ -1,3 +1,9 @@
+<% if notice %>
+<div class="alert alert-success">
+	<p id="notice"><%= notice %></p>
+</div>
+<% end %>
+
 <h1>Listado de Roles</h1>
 
 <%if @rols.size > 0%>
@@ -13,7 +19,7 @@
 	    <td><%= rol.rol %></td>
 	    <td><%= link_to 'Ver', rol,html_options = {:class => "btn btn-primary",:style=>"color: white"} %></td>
 	    <td><%= link_to 'Editar', edit_rol_path(rol), html_options = {:class => "btn btn-info",:style=>"color: white"} %></td>
-	    <td><%= link_to 'Eliminar', rol,html_options = {:class => "btn btn-danger",:style=>"color: white"}, confirm: '¿Estás seguro?', method: :delete %></td>
+	    <td><%= link_to 'Eliminar', rol,html_options = {:class => "btn btn-danger",:style=>"color: white", confirm: '¿Estás seguro?', method: :delete} %></td>
 	  </tr>
 	<% end %>
 	</table>

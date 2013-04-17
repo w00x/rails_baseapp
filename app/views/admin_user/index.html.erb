@@ -1,3 +1,8 @@
+<% if notice %>
+<div class="alert alert-success">
+	<p id="notice"><%= notice %></p>
+</div>
+<% end %>
 <h3>Listado de Usuarios</h3>
 <br />
 <%if @users.size > 0%>
@@ -25,7 +30,7 @@
 	    </td>
 	    <td><%= link_to "Ver", {:action => "show", :id => user.id},html_options = {:class => "btn btn-info",:style=>"color: white"} %></td>
 	    <td><%= link_to 'Editar', edit_admin_user_path(user), html_options = {:class => "btn btn-warning",:style=>"color: white"}  %></td>
-	    <td><%= link_to 'Eliminar', {:action => "destroy",:id =>user.id},html_options = {:class => "btn btn-danger",:style=>"color: white"}, {confirm: '¿Estás seguro?', method: :delete}  %></td>
+	    <td><%= link_to 'Eliminar', {:action => "destroy",:id =>user.id},html_options = {:class => "btn btn-danger",:style=>"color: white",confirm: '¿Estás seguro?', method: :delete}  %></td>
 	  </tr>
 	<% end %>
 	</table>

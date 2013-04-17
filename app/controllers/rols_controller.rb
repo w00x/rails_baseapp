@@ -51,7 +51,7 @@ class RolsController < ApplicationController
 
     respond_to do |format|
       if @rol.save
-        format.html { redirect_to @rol, notice: 'Rol fue satisfactoriamente creado.' }
+        format.html { redirect_to @rol, notice: 'Rol fue creado satisfactoriamente.' }
         format.json { render json: @rol, status: :created, location: @rol }
       else
         format.html { render action: "new" }
@@ -68,7 +68,7 @@ class RolsController < ApplicationController
 
     respond_to do |format|
       if @rol.update_attributes(params[:rol])
-        format.html { redirect_to @rol, notice: 'Rol fue satisfactoriamente actualizado.' }
+        format.html { redirect_to @rol, notice: 'Rol fue actualizado satisfactoriamente.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -85,7 +85,7 @@ class RolsController < ApplicationController
     @rol.destroy
 
     respond_to do |format|
-      format.html { redirect_to rols_url }
+      format.html { redirect_to rols_url, notice: 'Rol fue eliminado satisfactoriamente.' }
       format.json { head :no_content }
     end
   end
