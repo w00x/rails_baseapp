@@ -32,8 +32,11 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
+ puts "----------"
+    require 'pp'
+    pp params
     if @user.update_attributes(params[:user])
-      redirect_to users_path, :notice => 'Usuario actualizado satisfactoriamente.'
+      redirect_to user_path(@user.id), :notice => 'Usuario actualizado satisfactoriamente.'
     else
       render :action => 'edit'
     end

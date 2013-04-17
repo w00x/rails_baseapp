@@ -8,6 +8,7 @@ BaseRails::Application.routes.draw do
   match '/asignar_roles/agregar' => "asignar_roles#agregar", :as => "agregar_rol"
 
   match '/user(/:id)' => "users#edit", :as => "user"
+  match '/user/update(/:id)' => "users#update", :as => "user_update"
   match '/newuser' => "users#new", :as => "newuser"
   match '/login' => "sessions#new", :as => "login"
   match '/validate' => "sessions#create", :as => "validate"
