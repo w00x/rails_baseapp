@@ -26,17 +26,14 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @current_user = User.find_by_id(session[:user_id]) 
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
   end
   
   def update
-    @user = User.find(params[:id])
- puts "----------"
-    require 'pp'
-    pp params
+    @user = User.find(session[:user_id])
+
     if @user.update_attributes(params[:user])
-      redirect_to user_path(@user.id), :notice => 'Usuario actualizado satisfactoriamente.'
+      redirect_to user_path, :notice => 'Usuario actualizado satisfactoriamente.'
     else
       render :action => 'edit'
     end

@@ -56,7 +56,7 @@
 
             <%if defined? @current_user%>
               <p class="navbar-text pull-right">
-                Logeado como <%= link_to @current_user.nombre+" "+@current_user.apellidos, user_path(@current_user.id)%> <%= link_to "(Salir)",logout_path()%>
+                Logeado como <%= link_to @current_user.nombre+" "+@current_user.apellidos, user_path %> <%= link_to "(Salir)",logout_path()%>
               </p>
             <%else%>
               <p class="navbar-text pull-right">
