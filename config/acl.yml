@@ -4,3 +4,4 @@ admin:
 usuario:
     allow:
       main: [__all]
+      users: [__all]

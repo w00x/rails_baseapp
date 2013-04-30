@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class UsersController < ApplicationController
-  skip_before_filter :authenticate
-  skip_before_filter :permission
+  skip_before_filter :authenticate, :only => [:new, :create]
+  skip_before_filter :permission, :only => [:new, :create]
   
   def new
     @user = User.new
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     @user = User.find(session[:user_id])
 
     if @user.update_attributes(params[:user])
-      redirect_to user_path, :notice => 'Usuario actualizado satisfactoriamente.'
+      redirect_to edit_user_path, :notice => 'Usuario actualizado satisfactoriamente.'
     else
       render :action => 'edit'
     end
