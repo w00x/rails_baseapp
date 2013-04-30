@@ -10,18 +10,21 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(params[:user])
-    if @user.save
-      user_rol = UserRol.new
-      user_rol.user_id = @user.id
-      user_rol.rol_id = Rol.find_by_rol("usuario").id
-      user_rol.save
-      
-      flash[:success] = true
-      flash[:notice] = 'Usuario satisfactoriamente creado.'
-      redirect_to login_path
-    else
-      render :action => 'new',:layout => false
+    User.transaction do
+      @user = User.new(params[:user])
+      if @user.save
+        user_rol = UserRol.new
+        user_rol.user_id = @user.id
+        user_rol.rol_id = Rol.find_by_rol("usuario").id
+        user_rol.save
+        
+        flash[:success] = true
+        flash[:notice] = 'Usuario satisfactoriamente creado.'
+        redirect_to login_path
+      else
+        ActiveRecord::Rollback
+        render :action => 'new',:layout => false
+      end
     end
   end
   
