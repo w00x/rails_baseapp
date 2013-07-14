@@ -5,12 +5,12 @@ BaseRails::Application.routes.draw do
   resources :users
   resources :asignar_roles
   resources :admin_user
-  match '/asignar_roles/agregar' => "asignar_roles#agregar", :as => "agregar_rol"
+  post '/asignar_roles/agregar' => "asignar_roles#agregar", :as => "agregar_rol"
 
-  match '/newuser' => "users#new", :as => "newuser"
-  match '/login' => "sessions#new", :as => "login"
-  match '/validate' => "sessions#create", :as => "validate"
-  match '/logout' => "sessions#destroy", :as => "logout"
+  get '/newuser' => "users#new", :as => "newuser"
+  get '/login' => "sessions#new", :as => "login"
+  post '/validate' => "sessions#create", :as => "validate"
+  get '/logout' => "sessions#destroy", :as => "logout"
 
 
   # The priority is based upon order of creation:

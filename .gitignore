@@ -41,3 +41,4 @@ Thumbs.db
 #PROPIOS
 nbproject/*
 tmp/*
+Gemfile.lock
